@@ -1,6 +1,6 @@
 # flutter_large_text
 
-Simple large text app
+Simple large text app. [Web demo](https://it.works.lol/largetext).
 
 ## Getting Started
 

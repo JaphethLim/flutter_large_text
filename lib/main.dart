@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -185,6 +187,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> _launchAppURL() async {
+    Uri url = Uri.parse('https://github.com/JaphethLim/flutter_large_text');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -283,6 +292,29 @@ class _MyHomePageState extends State<MyHomePage> {
                   _toggleEdit();
                 },
               ),
+            // app info
+            FloatingActionButton(
+              child: const Icon(Icons.info),
+              onPressed: () {
+                showGeneralDialog(context: context, pageBuilder:
+                    (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                  // show standard About dialog & app URL
+                  return AboutDialog(
+                    applicationName: 'Large Text Demo',
+                    applicationVersion: 'Version: 0.0 lol',
+                    applicationIcon: const FlutterLogo(),
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _launchAppURL();
+                        },
+                        child: const Text('App source code'),
+                      ),
+                    ],
+                  );
+                });
+              },
+            )
           ],
         ),
       );
