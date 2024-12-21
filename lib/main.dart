@@ -345,8 +345,10 @@ class _MyHomePageState extends State<MyHomePage> {
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                child: Center(
-                  child: textWidget,
+                child: SafeArea(
+                  child: Center(
+                    child: textWidget,
+                  ),
                 ),
               ),
               if (editBar != null) editBar,
