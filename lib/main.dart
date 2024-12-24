@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _launchAppURL() async {
-    Uri url = Uri.parse('https://github.com/JaphethLim/flutter_large_text');
+    Uri url = Uri.parse('https://github.com/itworkslol/flutter_large_text');
     if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');
     }
